@@ -32,31 +32,29 @@ setup(
         "Programming Language :: Python :: 3.6",
     ],
     install_requires=[
-        "coloredlogs",
-        "beaker",
-        "sqlalchemy",
-        "flask_login",
-        "flask",
+        "beaker==1.11.0",
+        "click==7.1.2",
+        "coloredlogs==14.0",
+        "flask==1.1.2",
+        "flask_cors==3.0.8",
+        "gunicorn==20.0.4",
         "pandas==1.0.5",
-        "requests",
-        "flask_cors",
-        "flask_wtf",
-        "psycopg2-binary",
-        "click",
-        "psutil",
-        "gunicorn",
-        "six>=1.14.0"
+        "psutil==5.7.2",
+        "psycopg2_binary==2.8.5",
+        "requests==2.24.0",
+        "six==1.15.0",
+        "sqlalchemy==1.3.19"
     ],
     extras_require={
         "dev": [
-            "tox",
-            "pytest",
-            "ipdb",
-            "sphinx",
-            "sphinx_rtd_theme",
-            "sphinxcontrib-openapi",
-            "sphinxcontrib-redoc",
-            "docutils==0.15"
+            "docutils==0.15",
+            "ipdb==0.13.3",
+            "pytest==6.0.1",
+            "sphinx==3.2.1",
+            "sphinx_rtd_theme==0.5.0",
+            "sphinxcontrib-openapi==0.7.0",
+            "sphinxcontrib-redoc==1.6.0",
+            "tox==3.19.0"
         ]
     },
     entry_points={
