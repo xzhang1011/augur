@@ -1,3 +1,4 @@
+
 ALTER TABLE "spdx"."file_types" DROP CONSTRAINT IF EXISTS "uc_file_type_name";
 
 ALTER TABLE "spdx"."file_types" DROP CONSTRAINT IF EXISTS "file_types_pkey" CASCADE;
@@ -9,6 +10,7 @@ ALTER TABLE "spdx"."file_types" ALTER COLUMN "file_type_id" DROP DEFAULT;
 ALTER TABLE "spdx"."file_types" ADD CONSTRAINT "uc_file_type_name" PRIMARY KEY ("name");
 
 ALTER TABLE "spdx"."files" ALTER COLUMN "file_type_id" DROP NOT NULL;
+
 
 ALTER TABLE "spdx"."identifiers" DROP CONSTRAINT IF EXISTS "ck_identifier_exactly_one";
 
