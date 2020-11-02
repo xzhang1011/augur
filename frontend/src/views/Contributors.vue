@@ -120,16 +120,6 @@ export default class ContributorsPage extends Vue {
       
     }
 
-  
-
-    
-
-
-
-
-
-
-
     // axios
     //   .get(
     //     "http://localhost:5000/api/unstable/contributor_reports/new_contributors_bar/",
@@ -165,7 +155,7 @@ export default class ContributorsPage extends Vue {
 
 <style scoped>
 
-#new_contributors_bar{
+#Average_PR_duration{
   border: black 1px solid;
 }
 
