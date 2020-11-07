@@ -1,3 +1,4 @@
+#SPDX-License-Identifier: MIT
 """
 SPDX-License-Identifier: MIT
 
@@ -42,8 +43,9 @@ setup(
         "psutil==5.7.2",
         "psycopg2_binary==2.8.5",
         "requests==2.24.0",
-        "six==1.15.0",
+        "six>=1.14.0",
         "sqlalchemy==1.3.19"
+        "numpy<1.19.0,>=1.16.0"
     ],
     extras_require={
         "dev": [

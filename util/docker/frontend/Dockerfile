@@ -1,11 +1,12 @@
+#SPDX-License-Identifier: MIT
 FROM node:11 as build-stage
 
 LABEL maintainer="c@carterlandis.com"
 LABEL version="0.1.0"
 
 WORKDIR /augur/
-COPY ./util/docker/frontend/frontend.config.json .
-RUN cp frontend.config.json augur.config.json
+COPY ./util/docker/frontend/frontend.docker.config.json .
+RUN cp frontend.docker.config.json augur.config.json
 
 FROM build-stage as core-ui
 WORKDIR /augur/frontend/
