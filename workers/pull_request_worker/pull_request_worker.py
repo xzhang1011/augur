@@ -118,10 +118,18 @@ class GitHubPullRequestWorker(Worker):
                         
 
                     if 'data' in data:
-                        success = True
                         root = find_root_of_subject(data, data_subject)
+
+                        def is_not_valid_root(root):
+                            return root is None or 'pageInfo' not in root or 'edges' not in root
+
+                        if is_not_valid_root(root):
+                            self.logger.warning("Warning! Files root is invaid.\n")
+                            break
+
                         page_info = root['pageInfo']
                         data = root['edges']
+                        success = True
                         break
                     else:
                         self.logger.info("Request returned a non-data dict: {}\n".format(data))
