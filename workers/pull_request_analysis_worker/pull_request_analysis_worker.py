@@ -204,7 +204,6 @@ class PullRequestAnalysisWorker(Worker):
         # DEBUG:
         # df.to_csv(f'PRA_{repo_id}.csv',index=False)
 
-        '''
         # Insertion of merge probability to pull_request_analysis table
 
         self.logger.info('Begin PR_analysis data insertion...')
@@ -228,7 +227,6 @@ class PullRequestAnalysisWorker(Worker):
             except Exception as e:
                 self.logger.error(f'Error occurred while storing datapoint {repr(e)}')
                 break
-        '''
 
         self.logger.info('Data insertion completed\n')
 
