@@ -7,11 +7,11 @@ Welcome to the Augur project's official documentation. Below is a brief primer o
    :maxdepth: 2
 
    getting-started/toc
-   development-guide/toc
    rest-api/api
    config-file-reference
    schema/toc
    docker/toc
+   development-guide/toc
 .. library-documentation/toc
 .. deployment/toc
 

@@ -1,11 +1,14 @@
 Documentation
 =============
 
-**THIS SECTION IS UNDER CONSTRUCTION.**
+.. warning::
 
-If you have questions or would like to help please open an issue on GitHub_.
+    **THIS SECTION IS CURRENTLY UNDER CONSTRUCTION.**
+    Docs may be missing or inaccurate.
+    If you have questions or would like to help please open an issue on GitHub_.
 
 .. _GitHub: https://github.com/chaoss/augur/issues
+
 
 These commands are used to build and view Augur's documentation.
 Before making any documentation changes, please read the `documentation guide <../documentation.html>`_.
