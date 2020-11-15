@@ -9,10 +9,11 @@ Welcome to the Augur project's official documentation. Below is a brief primer o
    getting-started/toc
    development-guide/toc
    rest-api/api
+   config-file-reference
+   schema/toc
    docker/toc
 .. library-documentation/toc
 .. deployment/toc
-.. schema/toc
 
 
 

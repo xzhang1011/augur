@@ -1,5 +1,5 @@
-Testing
-===============
+Docker developer guide
+==========================
 
 **THIS SECTION IS UNDER CONSTRUCTION.**
 
@@ -10,5 +10,7 @@ If you have questions or would like to help please open an issue on GitHub_.
 .. toctree::
    :maxdepth: 2
 
-   tox
-   travis
+   backend
+   frontend
+   test-data
+   database

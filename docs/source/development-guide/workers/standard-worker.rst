@@ -1,5 +1,5 @@
-Frontend
-==========
+Standard Worker
+================
 
 **THIS SECTION IS UNDER CONSTRUCTION.**
 

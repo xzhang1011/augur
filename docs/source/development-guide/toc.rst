@@ -14,15 +14,13 @@ If you have questions or would like to help please open an issue on GitHub_.
    :maxdepth: 1
 
    installation
+   create-a-metric/toc
+   workers/toc
+   testing/toc
+   frontend/toc
    make/toc
-   logging
    documentation
-
-.. configuration-file-reference
-.. metrics-api/toc
-.. workers/toc
-.. cli
-.. frontend/toc
-.. testing/toc
-.. documentation
-.. create-a-metric/toc
+   logging
+   command-line-interface/toc
+   backend-server/toc
+   docker/toc
