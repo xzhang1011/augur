@@ -1,7 +1,7 @@
 /augur/cli/ @ccarterlandis
 /augur/metrics/ @ccarterlandis @sgoggins
-/augur/housekeeper/ @gabe-heim
-/augur/server.py @ccarterlandis @gabe-heim
+/augur/housekeeper/ @gabe-heim @sgoggins
+/augur/server.py @ccarterlandis @gabe-heim @sgoggins
 /augur/application.py @ccarterlandis @sgoggins @gabe-heim
 /augur/routes/ @ccarterlandis @gabe-heim @sgoggins
 
