@@ -152,6 +152,7 @@ export default class Repos extends Vue{
   themes: string[] = ['dark', 'info', 'royal-blue', 'warning'];
   loadedGroups: boolean = false;
   loadedSparks: boolean = false;
+  loading: boolean = true;
 
   loadedRepos: boolean = false;
 

@@ -79,6 +79,7 @@ import Component from 'vue-class-component';
 import Vue from 'vue';
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import Spinner from '../components/Spinner.vue'
+import axios from 'axios';
 @Component({
   components: {
     Spinner,
@@ -113,9 +114,14 @@ export default class Workers extends Vue{
   loadedGroups: boolean = false;
   loadedSparks: boolean = false;
   loadedRepos: boolean = false;
-
+  pageData: any = [];
+  color_mapping: any = {};
+  loading: boolean = true;
   ascending:boolean = false;
+  errored:boolean = false;
   sortColumn: string ='name';
+
+  baseURL!:any;
 
   workers:any[] = [
     {'name':'Issue Collection', 'status':'operational'},
@@ -135,6 +141,26 @@ export default class Workers extends Vue{
   setBaseRepo!:any;
   addComparedRepo!:any;
 
+ mounted () {
+    console.log(this.baseURL)
+    axios.get("http://localhost:5000/api/unstable/workers/status").then(response => {
+    // axios.get(this.baseURL + "api/unstable/frontend-insights-page").then(response => {
+      console.log("Workers page response: ", response)
+      // Define this.color_mapping based on the unique metrics returned by endpoint
+      for (let i = 0; i < response.data.length; i++) {
+        if (!Object.keys(this.color_mapping).includes(response.data[i]['ri_metric'])) {
+          this.color_mapping[response.data[i]['ri_metric']] = (
+            Math.min(this.colors.length, this.themes.length) % i) - 1
+        }
+      }
+      this.pageData = response.data
+      this.loading = false
+    }).catch(error => {
+      console.log("Workers page error: ", error)
+      this.errored = true
+      this.loading = false
+    }).finally(() => this.loading = false)
+  }
 
   created() {
     this.workers = [

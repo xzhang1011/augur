@@ -135,14 +135,14 @@
         htmlBefore: '<i class="material-icons">table_chart</i>',
         htmlAfter: '',
       },
-      // {
-      //   title: 'Workers',
-      //   to: {
-      //     name: 'workers',
-      //   },
-      //   htmlBefore: '<i class="material-icons">assignment</i>',
-      //   htmlAfter: '',
-      // },
+       {
+        title: 'Workers',
+        to: {
+           name: 'workers',
+         },
+         htmlBefore: '<i class="material-icons">assignment</i>',
+         htmlAfter: '',
+       },
       {
         title: 'Groups',
         to: {
