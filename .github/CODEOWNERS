@@ -21,7 +21,7 @@
 /tests/ @ccarterlandis
 /util/docker @ccarterlandis
 /scripts/ @ccarterlandis
-/docs/ @ccarterlandis
+/docs/ @ccarterlandis @sgoggins
 /.dockerignore @ccarterlandis
 /.travis.yml @ccarterlandis
 *compose.yml @ccarterlandis
