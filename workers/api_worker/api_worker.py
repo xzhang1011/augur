@@ -69,6 +69,22 @@ class ApiWorker(Worker):
 
         """
 
+
+
+        #hit user endpoint, to get json that contains other endpoints to hit
+        #then hit those endpoints
+        #find repos, cntrb_category, then check if the row is already present
+
+
+        self.logger.info("Querying starting ids info...\n")
+
+        self.cntrb_repo_id_inc = self.get_max_id('contributor_repo', 'cntrb_repo_id')
+
+
+
+        self.logger.info("Beginning filling the issues model for repo: " + github_url + "\n")
+
+
         # Any initial database instructions, like finding the last tuple inserted or generate the next ID value
 
         # Collection and insertion of data happens here
