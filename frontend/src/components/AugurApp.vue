@@ -33,7 +33,7 @@ export default {
 @import "~@/styles/chunk-vendors.7677be57.css";
 
 </style>
-<style lang="stylus">
+<style lang="Stylus">
 @import "~@/styles/augur.styl";
 
 </style>

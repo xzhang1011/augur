@@ -272,7 +272,7 @@ default_config = {
             "timeout": 60
         },
         "Frontend": {
-            "host": "0.0.0.0",
+            "host": "localhost",
             "port": "5000"
         },
         "Logging": {
