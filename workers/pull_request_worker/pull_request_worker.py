@@ -411,7 +411,8 @@ class GitHubPullRequestWorker(Worker):
                 'pr_src_author_association': pr_dict['author_association'],
                 'tool_source': self.tool_source,
                 'tool_version': self.tool_version,
-                'data_source': 'GitHub API'
+                'data_source': 'GitHub API',
+                'repo_id': pr_dict['repo_id']
             }
 
             if pr_dict['flag'] == 'need_insertion':
