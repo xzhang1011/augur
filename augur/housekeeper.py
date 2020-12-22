@@ -111,6 +111,12 @@ class Housekeeper:
                                 "given": {}
                             }
                             task['given'][given_key] = repo['repo_git']
+
+                            ## This is pretty important. Setting a housekeeper job 
+                            ## "focused task": 1 will ensure that all of the history is collected.
+                            ## It takes longer, because you are paging through all the data, but
+                            ## Its necessary on the first 1-3 runs (accounting for GitHub API
+                            ## "burps", especially on larger repositories.)
                             if "focused_task" in repo:
                                 task["focused_task"] = repo['focused_task']
                             try:
@@ -140,6 +146,10 @@ class Housekeeper:
 
                     logger.info("Housekeeper finished sending {} tasks to the broker for it to distribute to your worker(s)".format(len(job['repos'])))
                     time.sleep(job['delay'])
+
+                    ## It appears that the code above is fine for what we know. But is there a way for the 
+                    ## Housekeeper to take a new type of "given", and process the model for that task in 
+                    ## The housekeeper block of augur.config.json. 
 
         except KeyboardInterrupt as e:
             pass

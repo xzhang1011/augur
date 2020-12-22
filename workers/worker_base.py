@@ -327,7 +327,13 @@ class Worker():
             #   and worker can move onto the next task without stopping
             try:
                 self.logger.info("Calling model method {}_models".format(message['models'][0]))
+
                 model_method(message, repo_id)
+            '''
+            In a case where the given is a cntrb_id instead of a repo_id, would it make sense
+            to simply and an elif here, and/or check somewhere else for whether its a repo_id
+            or cntrb_id that gets passed. 
+            '''
             except Exception as e: # this could be a custom exception, might make things easier
                 self.register_task_failure(message, repo_id, e)
                 break
@@ -724,6 +730,14 @@ class Worker():
 
         self.logger.info("OAuth initialized")
 
+"""
+This paginate function also includes the logic for checking and logging API
+keys.  Could it be simplified by separating these functions? 
+
+There is a nagging issue with the PR worker not collecting all the pull 
+requests on ONLY SOME very large PR sets on repos. Needs looking into. 
+
+"""
     def paginate(self, url, duplicate_col_map, update_col_map, table, table_pkey, where_clause="", value_update_col_map={}, platform="github"):
         """ Paginate either backwards or forwards (depending on the value of the worker's
             finishing_task attribute) through all the GitHub or GitLab api endpoint pages.
@@ -904,6 +918,9 @@ class Worker():
 
         self.logger.info("Count of contributors needing insertion: " + str(len(contributors)) + "\n")
 
+
+        ##QUESTION: Does this go get the Github/Gitlab contributor info if they are 
+        ##Not already in our database? 
         for repo_contributor in contributors:
             try:
                 # Need to hit this single contributor endpoint to get extra data including...
@@ -1226,6 +1243,12 @@ class Worker():
         values = json.loads(pd.read_sql(retrieveTupleSQL, self.db, params={}).to_json(orient="records"))
         return values
 
+'''
+QUESTION: Is there a better way to do this? I am not sure how we are determining 
+"bad credentials", because I have had credentials reach their rate limit and be named 
+as "bad credentials" when they are not. 
+
+'''
     def update_gitlab_rate_limit(self, response, bad_credentials=False, temporarily_disable=False):
         # Try to get rate limit from request headers, sometimes it does not work (GH's issue)
         #   In that case we just decrement from last recieved header count
@@ -1287,6 +1310,11 @@ class Worker():
             # Change headers to be using the new oauth's key
             self.headers = {"PRIVATE-TOKEN" : self.oauths[0]['access_token']}
 
+
+'''
+We need to double check what GitHub's return codes now mean. I think they have been 
+tweaking them and confusing us occasionally on large collections. 
+'''
 
     def update_gh_rate_limit(self, response, bad_credentials=False, temporarily_disable=False):
         # Try to get rate limit from request headers, sometimes it does not work (GH's issue)

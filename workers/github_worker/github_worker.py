@@ -18,6 +18,9 @@ class GitHubWorker(Worker):
 
         worker_type = 'github_worker'
 
+'''
+given is generally "github_url" if we are going to make a call to the GitHub URL. 
+'''
         given = [['github_url']]
         models = ['issues']
 
