@@ -1,0 +1,29 @@
+
+
+<div class='main_container'>
+  <div class='title'>Select a Repo Group 
+    <!-- <input type="text" placeholder="Search.." class='search'> -->
+  </div>
+  <div class="table_cont">
+    <table>
+      <thead>
+        <tr>
+          <th>Repo Group</th>
+          <th>Description</th>
+          <th>Website</th>
+          <th>Last Modified</th>
+          <th># Repos</th>
+        </tr>
+      </thead>
+      
+      <tr class='hovercol' *ngFor="let group of repogroups; let i = index" (click)="select_rgID(i)">
+        <td style="width:25%" class="aligncenter" >{{group.rg_name}}</td>
+        <td style="width:25%">{{group.rg_description}}</td>
+        <td style="width:20%">{{group.rg_website}}</td>
+        <td style="width:15%">{{group.rg_last_modified}}</td>
+        <td style="width:15%">{{group.num_repos}}</td>
+      </tr>
+  </table>
+  </div>
+
+</div>

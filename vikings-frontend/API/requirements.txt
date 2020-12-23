@@ -1,0 +1,8 @@
+Flask
+Flask-Cors
+matplotlib
+numpy
+psycopg2-binary
+requests
+waitress
+

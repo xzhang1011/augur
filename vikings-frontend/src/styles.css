@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    background-color: #BAC8D3;
+}
+
+body {
+    width:100%;
+    margin:0px;
+}
+
+.hovercol:hover td {
+    background-color: paleturquoise;
+}
+
+
+.aligncenter{
+    text-align:center;
+}

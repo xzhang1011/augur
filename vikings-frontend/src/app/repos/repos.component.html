@@ -1,0 +1,36 @@
+
+
+<div class='main_container'>
+
+    <div class="rg_title">{{this.repos[0].rg_name}}</div>
+
+
+    <div class='title'>Select a Repo</div>
+
+    <div class="table_cont">
+      <table>
+        <thead>
+          <tr>
+            <th>Repos</th>
+            <th>Git URL</th>
+            <th># Commits</th>
+            <th># Issues</th>
+            <th># Committers</th>
+          </tr> 
+        </thead>
+          <tbody>
+            <tr class='hovercol'  *ngFor="let repo of repos; let i = index" (click)="getrepoID(i)" >
+              <td  class="aligncenter" >{{repo.repo_name}}</td>
+              <td>{{repo.repo_git}}</td>
+              <td>{{repo.commit_count}}</td>
+              <td>{{repo.issues_count}}</td>
+              <td>{{repo.committers_count}}</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
+      
+</div>
+  
+
