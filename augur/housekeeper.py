@@ -143,6 +143,13 @@ class Housekeeper:
                                 broker_host,broker_port), json=task, timeout=10)
                         except Exception as e:
                             logger.error("Error encountered: {}".format(e))
+                    '''
+                    If calling the given a github_url for the contributor_breadth_worker fails...
+                    elif job['given'][0] == 'contributor': 
+                        task = {
+                                ?????
+                                }
+                    '''
 
                     logger.info("Housekeeper finished sending {} tasks to the broker for it to distribute to your worker(s)".format(len(job['repos'])))
                     time.sleep(job['delay'])
