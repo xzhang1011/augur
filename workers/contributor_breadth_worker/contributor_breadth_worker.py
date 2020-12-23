@@ -133,7 +133,7 @@ class ValueWorker(Worker):
         sean kinda would like to get while we are here: 
             **a. name
             **b. full_name
-            **c. forks_url (*need* an enumeration of forks)
+            **c. forks_url (*need* an enumeration of forks: contributor_repo_forks table)
             d. collaborators_url (and maybe the full list of collaborators now)
             e. branches_url
             f. stargazers_url
