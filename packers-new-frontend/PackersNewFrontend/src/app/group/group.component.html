@@ -1,0 +1,23 @@
+<div class="m-2">
+<h1>Currently Stored Repos in {{repoGroupName}}</h1>
+<table class="table">
+    <tr>
+        <th>Repo Name</th>
+        <th>Commits All Time</th>
+        <th>Issues All Time</th>
+        <th>Github link</th>
+    </tr>
+    <tr *ngFor="let repo of repoList;">
+        <td><a [routerLink]="['/repoInfo',repo.repo_id]">{{repo.repo_name}}</a></td>
+        <td>{{repo.commits_all_time}}</td>
+        <td>{{repo.issues_all_time}}</td>
+        <td><a target="_blank" href="{{repo.url}}">{{repo.url}}</a></td>
+    </tr>
+</table>
+
+<div class="container" *ngIf="!repoList">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+</div>
