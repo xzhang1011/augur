@@ -32,6 +32,8 @@ import InspectInsight from './views/InspectInsight.vue';
 import RiskMetrics from "@/views/RiskMetrics.vue";
 import NProgress from "nprogress";
 import SlackConfig from './views/SlackConfig.vue';
+import Giants from './views/Giants.vue';
+import GiantsRepoStatus from './views/GiantsRepoStatus.vue';
 
 const routes = [
   {
@@ -237,6 +239,32 @@ const routes = [
     name: 'errors',
     component: Errors,
   },
+  
+  {
+    path: '/giants',
+    component: Default,
+    children: [
+      {
+        path: '',
+        name: 'giants',
+        components: {
+          sidebar: MainSidebar,
+          navbar: MainNavbar,
+          content: Giants,
+        },
+      },
+      {
+        path: ':repo_id/status',
+        name: 'giants_status',
+        components: {
+          sidebar: MainSidebar,
+          navbar: MainNavbar,
+          content: GiantsRepoStatus,
+        },
+      },
+    ],
+  },
+  
   {
     path: '*',
     redirect: '/errors',

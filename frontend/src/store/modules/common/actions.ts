@@ -237,6 +237,20 @@ export default {
             throw error;
         }
     },
+    async loadGiantsRepos(context:any, payload:any){
+        try {
+            return context.state.AugurAPI.getGiantsRepos().then((repos: object[]) => {
+                console.log("Loaded giants-project repos: ", repos)
+                context.commit('mutateCache', {
+                    property: 'getGiantsRepos',
+                    with: repos,
+                });
+                return repos
+            })
+        } catch(error) {
+            throw error;
+        }
+    },
     async loadRepoGroups(context:any, payload:any){
         try {
             console.log("Attempting to load repo groups...")
@@ -247,6 +261,18 @@ export default {
                     property: 'getRepoGroups',
                     with: rgs,
                 });
+                return rgs
+            });
+        } catch(error) {
+            throw error;
+        }
+    },
+    async loadGiantsStatus(context:any, payload:any){
+        try {
+            console.log("Attempting to load giants repo status...")
+            console.log(context.state)
+            return context.state.AugurAPI.getGiantsStatus(payload).then((rgs: object[]) => {
+                console.log("Loaded giants repo status: ", rgs)
                 return rgs
             });
         } catch(error) {
