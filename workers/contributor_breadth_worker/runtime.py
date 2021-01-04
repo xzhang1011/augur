@@ -1,7 +1,7 @@
 #SPDX-License-Identifier: MIT
 from flask import Flask, jsonify, request, Response
 import click, os, json, requests, logging
-from workers.api_worker.api_worker import ApiWorker
+from workers.contributor_breadth_worker.contributor_breadth_worker import ContributorBreadthWorker
 from workers.util import create_server, WorkerGunicornApplication
 
 def main():
@@ -9,7 +9,7 @@ def main():
     Creates the Flask app and data collection worker, then starts the Gunicorn server
     """
     app = Flask(__name__)
-    app.worker = ApiWorker()
+    app.worker = ContributorBreadthWorker()
 
     create_server(app)
     WorkerGunicornApplication(app).run()

@@ -6,13 +6,13 @@ import pandas as pd
 import sqlalchemy as s
 from workers.worker_base import Worker
 
-class ApiWorker(Worker):
+class ContributorBreadthWorker(Worker):
     def __init__(self, config={}):
         
         # Define the worker's type, which will be used for self identification.
         #   Should be unique among all workers and is the same key used to define 
         #   this worker's settings in the configuration file.
-        worker_type = "api_worker"
+        worker_type = "contributor_breadth_worker"
 
         # Define what this worker can be given and know how to interpret
         # given is usually either [['github_url']] or [['git_url']] (depending if your 
@@ -22,7 +22,7 @@ class ApiWorker(Worker):
         # The name the housekeeper/broker use to distinguish the data model this worker can fill
         #   You will also need to name the method that does the collection for this model
         #   in the format *model name*_model() such as fake_data_model() for example
-        models = ['api']
+        models = ['contributor_breadth']
 
         # Define the tables needed to insert, update, or delete on
         #   The Worker class will set each table you define here as an attribute
@@ -43,11 +43,11 @@ class ApiWorker(Worker):
         # data collection process
 
         # Define data collection info
-        self.tool_source = 'Api Worker'
+        self.tool_source = 'Contributor Breadth Worker'
         self.tool_version = '0.0.0'
         self.data_source = 'GitHub API'
 
-    def api_model(self, task, repo_id):
+    def contributor_breadth_model(self, task, repo_id):
         """ This is just an example of a data collection method. All data collection 
             methods for all workers currently accept this format of parameters. If you 
             want to change these parameters, you can re-define the collect() method to 
@@ -95,5 +95,5 @@ class ApiWorker(Worker):
         #   This is a method of the worker class that is required to be called upon completion
         #   of any data collection model, this lets the broker know that this worker is ready
         #   for another task
-        self.register_task_completion(task, repo_id, 'api')
+        self.register_task_completion(task, repo_id, 'contributor_breadth')
 

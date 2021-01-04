@@ -13,7 +13,7 @@ def read(filename):
         return re.sub(text_type(r':[a-z]+:`~?(.*?)`'), text_type(r'``\1``'), fd.read())
 
 setup(
-    name="api_worker",
+    name="contributor_breadth_worker",
     version="0.0.0",
     url="https://github.com/chaoss/augur",
     license='MIT',
@@ -28,7 +28,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'api_worker_start=workers.api_worker.runtime:main',
+            'api_worker_start=workers.contributor_breadth_worker.runtime:main',
         ],
     },
     classifiers=[
