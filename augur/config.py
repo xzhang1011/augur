@@ -258,10 +258,9 @@ default_config = {
                     "insight_days": 30
                 },
                 "discourse_analysis_worker":{
-                "port" : 51500,
-                "switch": 0,
-                "workers": 1
-
+                    "port" : 51500,
+                    "switch": 0,
+                    "workers": 1
                 },
                 "clustering_worker": {
                     "port": 51600,
