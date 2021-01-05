@@ -26,5 +26,12 @@
 \i schema/generate/21-schema_update_23.sql
 \i schema/generate/22-schema_update_24.sql
 \i schema/generate/23-schema_update_25.sql
-\i schema/generate/24-schema_update_26.sql 
-\i schema/generate/25-schema_update_27.sql 
+\i schema/generate/24-schema_update_26.sql
+\i schema/generate/25-schema_update_27.sql
+\i schema/generate/26-schema_update_28.sql
+\i schema/generate/27-schema_update_29.sql
+\i schema/generate/28-schema_update_30.sql
+\i schema/generate/29-schema_update_31.sql
+\i schema/generate/30-schema_update_32.sql
+\i schema/generate/31-schema_update_33.sql
+\i schema/generate/32-schema_update_34.sql

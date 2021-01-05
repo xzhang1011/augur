@@ -215,6 +215,7 @@ class Worker():
             self.logger.info(HelperBase.classes.keys())
         except:
             pass
+
         for table in self.operations_tables:
             try:
                 setattr(self, '{}_table'.format(table), HelperBase.classes[table].__table__)
@@ -500,7 +501,6 @@ class Worker():
             "was reduced to {} tuples, and {} tuple updates are needed.\n".format(need_insertion_count, need_update_count))
         return new_data
 
-    @staticmethod
     def check_duplicates(self, new_data, table_values, key):
         """ Filters what items of the new_data json (list of dictionaries) that are not
         present in the table_values df
