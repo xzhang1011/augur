@@ -607,6 +607,7 @@ class ContributorWorker(Worker):
                 self.logger.info("MORE THAN ONE CANONICAL CONTRIBUTOR found for email: {}".format(cntrb_email))
             elif len(canonical_id_result) == 0:
                 self.logger.info(f"Warning! Did not find a canonical contributor for supposed canonical email: {cntrb_email}")
+                return
 
             alias_tuple = {
                 'cntrb_id': canonical_id_result[0]['canonical_id'],
