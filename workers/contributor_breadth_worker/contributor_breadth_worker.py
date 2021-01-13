@@ -17,7 +17,7 @@ class ContributorBreadthWorker(Worker):
         # Define what this worker can be given and know how to interpret
         # given is usually either [['github_url']] or [['git_url']] (depending if your 
         # worker is exclusive to repos that are on the GitHub platform)
-        given = [['github_url']]
+        given = [[]]
 
         # The name the housekeeper/broker use to distinguish the data model this worker can fill
         #   You will also need to name the method that does the collection for this model
@@ -27,7 +27,7 @@ class ContributorBreadthWorker(Worker):
         # Define the tables needed to insert, update, or delete on
         #   The Worker class will set each table you define here as an attribute
         #   so you can reference all of them like self.message_table or self.repo_table
-        data_tables = ['contributors']
+        data_tables = ['contributor_repo']
         # For most workers you will only need the worker_history and worker_job tables
         #   from the operations schema, these tables are to log worker task histories
         operations_tables = []
