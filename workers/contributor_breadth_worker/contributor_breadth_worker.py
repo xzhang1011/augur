@@ -69,6 +69,64 @@ class ContributorBreadthWorker(Worker):
 
         """
 
+        self.cntrb_repo_id_inc = self.get_max_id('contributor_repo', 'cntrb_repo_id')
+
+
+        cntrb_login_query = s.sql.text("""
+            SELECT gh_login, cntrb_id 
+            FROM augur_data.contributors 
+            WHERE gh_login IS NOT NULL
+        """)
+
+        cntrb_logins = json.loads(pd.read_sql(cntrb_login_query, self.db, \
+            params={}).to_json(orient="records"))
+
+        self.logger.info("Beginning filling the contributor breadth model for this database: " + self.df + "\n")
+
+        for cntrb in cntrb_logins:
+
+            repo_cntrb_url = "https://api.github.com/users/{}/events".format(cntrb['gh_login'])
+
+            # Get issues that we already have stored
+            #   Set pseudo key (something other than PK) to 
+            #   check dupicates with
+            table = 'contributor_repo'
+            table_pkey = 'cntrb_repo_id'
+            update_col_map = {} #'updated_at': 'updated_at', 'closed_at': 'closed_at'
+            duplicate_col_map = {}
+
+            repo_cntrbs = self.paginate(repo_cntrb_url, duplicate_col_map, update_col_map, table, table_pkey)
+
+            for repo_cntrb_dict in repo_cntrbs:
+
+                repo_cntrb_dict['cntrb_id'] = cntrb['cntrb_id']
+
+                repo_cntrb = {
+                    "cntrb_id": repo_cntrb_dict['cntrb_id']
+                    "event_id": repo_cntrb_dict['id'],
+                    "event_type": repo_cntrb_dict['type'],
+                    "repo_id": repo_cntrb_dict['repo']['id'],
+                    "repo_name": repo_cntrb_dict['repo']['name'],
+                    "repo_url": repo_cntrb_dict['repo']['url'],
+                    "created_at": repo_cntrb_dict['created_at'],
+                    "tool_source": self.tool_source,
+                    "tool_version": self.tool_version,
+                    "data_source": self.data_source,
+                }
+
+
+                # id
+                # type
+                # repo.id 
+                # repo.name 
+                # repo.url 
+                # created_at 
+
+
+
+
+
+
 
 
         #hit user endpoint, to get json that contains other endpoints to hit
@@ -76,13 +134,7 @@ class ContributorBreadthWorker(Worker):
         #find repos, cntrb_category, then check if the row is already present
 
 
-        self.logger.info("Querying starting ids info...\n")
-
-        self.cntrb_repo_id_inc = self.get_max_id('contributor_repo', 'cntrb_repo_id')
-
-
-
-        self.logger.info("Beginning filling the issues model for repo: " + github_url + "\n")
+        
 
 
         # Any initial database instructions, like finding the last tuple inserted or generate the next ID value
