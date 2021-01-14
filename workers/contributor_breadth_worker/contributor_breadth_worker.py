@@ -47,7 +47,7 @@ class ContributorBreadthWorker(Worker):
         self.tool_version = '0.0.0'
         self.data_source = 'GitHub API'
 
-    def contributor_breadth_model(self, task, repo_id):
+    def contributor_breadth_model(self, task):
         """ This is just an example of a data collection method. All data collection 
             methods for all workers currently accept this format of parameters. If you 
             want to change these parameters, you can re-define the collect() method to 
@@ -111,7 +111,7 @@ class ContributorBreadthWorker(Worker):
                     "created_at": repo_cntrb_dict['created_at'],
                     "tool_source": self.tool_source,
                     "tool_version": self.tool_version,
-                    "data_source": self.data_source,
+                    "data_source": self.data_source
                 }
 
 
@@ -122,20 +122,9 @@ class ContributorBreadthWorker(Worker):
                 # repo.url 
                 # created_at 
 
-
-
-
-
-
-
-
         #hit user endpoint, to get json that contains other endpoints to hit
         #then hit those endpoints
         #find repos, cntrb_category, then check if the row is already present
-
-
-        
-
 
         # Any initial database instructions, like finding the last tuple inserted or generate the next ID value
 
@@ -147,5 +136,5 @@ class ContributorBreadthWorker(Worker):
         #   This is a method of the worker class that is required to be called upon completion
         #   of any data collection model, this lets the broker know that this worker is ready
         #   for another task
-        self.register_task_completion(task, repo_id, 'contributor_breadth')
+        self.register_task_completion(task, None, 'contributor_breadth')
 
